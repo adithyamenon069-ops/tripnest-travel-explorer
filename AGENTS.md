@@ -28,3 +28,10 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Site content (destinations, packages, testimonials, company contact info) lives in typed modules under `src/data/`; pages read from them so content edits never touch layout code.
+- Destination/package filtering and contact validation live in pure helpers in `src/lib/` (covered by `src/test/`), so rules stay testable outside the UI.
+- Filter state on `/destinations` and `/packages` is kept in validated URL search params so filtered views are shareable and survive reloads.
+- The contact form has no backend: it must never claim an enquiry was sent or a booking made until one is connected.
